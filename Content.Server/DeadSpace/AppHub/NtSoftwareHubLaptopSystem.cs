@@ -1,10 +1,10 @@
 using System.Linq;
-using Content.Server.UserInterface;
 using Content.Shared.DeadSpace.AppHub;
 using Content.Shared.MassMedia.Components;
 using Content.Shared.Station;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.DeadSpace.AppHub;
@@ -19,8 +19,8 @@ public sealed class NtSoftwareHubLaptopSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<NtSoftwareHubLaptopComponent, AfterActivatableUIOpenEvent>(OnUiOpen);
         SubscribeLocalEvent<NtSoftwareHubLaptopComponent, NtSoftwareHubLaptopPurchaseMessage>(OnPurchase);
+        SubscribeLocalEvent<NtSoftwareHubLaptopComponent, AfterActivatableUIOpenEvent>(OnUiOpen);
     }
 
     private void OnUiOpen(EntityUid uid, NtSoftwareHubLaptopComponent comp, AfterActivatableUIOpenEvent args)

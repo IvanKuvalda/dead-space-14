@@ -1,24 +1,28 @@
 - type: entity
-  parent: BaseComputer
+  parent: [BaseItem, BaseDeployFoldable]
   id: NtSoftwareHubLaptop
   name: ноутбук NT Software Hub
-  description: Специальный ноутбук для покупки приложений за лайки в новостях. Загруженные приложения добавляются в каталог NT Software Hub всех КПК на этой станции.
+  description: Специальный ноутбук для покупки приложений за лайки в новостях. Загруженные приложения добавляются в каталог NT Software Hub всех КПК на этой станции. Разложите его, чтобы открыть магазин приложений.
   components:
   - type: Sprite
-    noRot: true
     sprite: _DeadSpace/Structures/Machines/Laptop.rsi
+    noRot: true
     layers:
-    - map: ["computerLayerBody"]
-      state: icon
-    - map: ["computerLayerScreen"]
-      state: unshaded
-      shader: unshaded
+    - state: open
+      map: ["unfoldedLayer"]
+    - state: icon
+      map: ["foldedLayer"]
+      visible: false
+  - type: Appearance
+  - type: Foldable
+    folded: true
+  - type: Item
+    size: Normal
   - type: NtSoftwareHubLaptop
   - type: ActivatableUI
     key: enum.NtSoftwareHubLaptopUiKey.Key
+    verbText: ui-verb-toggle-open
   - type: UserInterface
     interfaces:
       enum.NtSoftwareHubLaptopUiKey.Key:
         type: NtSoftwareHubLaptopBoundUserInterface
-  - type: Computer
-    board: NtSoftwareHubLaptopCircuitboard

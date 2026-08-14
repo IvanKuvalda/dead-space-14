@@ -11,8 +11,8 @@ app-catalog-entry-scanner-desc = A program for scanning documents.
 app-hub-no-programs = No programs available
 
 # Laptop UI
+nt-software-hub-laptop-likes = Likes: { $likes }
 nt-software-hub-laptop-title = NT Software Hub — Laptop
-nt-software-hub-laptop-balance = Likes: { $balance } (total: { $total }, spent: { $spent })
 nt-software-hub-laptop-cost = { $cost } likes
 nt-software-hub-laptop-buy = Buy
 nt-software-hub-laptop-purchased = Purchased

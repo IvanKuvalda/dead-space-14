@@ -93,10 +93,6 @@
   id: AppHubConsoleCircuitboard
   result: AppHubConsoleCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseServiceComputerRecipeCategory ]
-  id: NtSoftwareHubLaptopCircuitboard
-  result: NtSoftwareHubLaptopCircuitboard
 # DS14-End
 
 # Shuttle

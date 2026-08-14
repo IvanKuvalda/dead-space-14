@@ -24,12 +24,9 @@ public sealed partial class NtSoftwareHubLaptopMenu : DefaultWindow
 
     public void UpdateState(NtSoftwareHubLaptopUiState state)
     {
-        BalanceLabel.Text = Loc.GetString("nt-software-hub-laptop-balance",
-            ("balance", state.TotalLikes - state.SpentLikes),
-            ("total", state.TotalLikes),
-            ("spent", state.SpentLikes));
-
-        PopulateProgramList(state.Entries, state.TotalLikes - state.SpentLikes);
+        var currentLikes = state.TotalLikes - state.SpentLikes;
+        LikesLabel.Text = Loc.GetString("nt-software-hub-laptop-likes", ("likes", currentLikes));
+        PopulateProgramList(state.Entries, currentLikes);
     }
 
     private void PopulateProgramList(List<NtSoftwareHubLaptopCatalogEntry> entries, int balance)

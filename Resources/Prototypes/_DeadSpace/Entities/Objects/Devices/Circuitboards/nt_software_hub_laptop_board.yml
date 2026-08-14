@@ -1,9 +1,0 @@
-- type: entity
-  parent: BaseComputerCircuitboard
-  id: NtSoftwareHubLaptopCircuitboard
-  name: NT Software Hub (плата ноутбука)
-  components:
-  - type: Sprite
-    state: cpu_science
-  - type: ComputerBoard
-    prototype: NtSoftwareHubLaptop

@@ -12,7 +12,7 @@
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Horizontal" Margin="8 4" SeparationOverride="12">
                 <Label Name="LaptopTitleLabel" StyleClasses="LabelBig" Text="NT Software Hub" />
-                <Label Name="BalanceLabel" FontColorOverride="#FFD700" HorizontalExpand="True" HorizontalAlignment="Right" />
+                <Label Name="LikesLabel" StyleClasses="LabelBig" HorizontalAlignment="Right" HorizontalExpand="True" FontColorOverride="#FFD700" />
             </BoxContainer>
         </PanelContainer>
         <PanelContainer VerticalExpand="True" HorizontalExpand="True">

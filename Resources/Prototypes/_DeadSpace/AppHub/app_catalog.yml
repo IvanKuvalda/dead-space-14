@@ -15,7 +15,7 @@
   description: app-catalog-entry-wanted-list-desc
   category: Equipment
   programId: WantedListCartridge
-  likesCost: 5
+  likesCost: 2
 
 - type: appCatalogEntry
   id: app-snake

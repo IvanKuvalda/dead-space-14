@@ -11,8 +11,8 @@ app-catalog-entry-scanner-desc = Программа для сканирован�
 app-hub-no-programs = Нет доступных программ
 
 # Laptop UI
+nt-software-hub-laptop-likes = Лайки: { $likes }
 nt-software-hub-laptop-title = NT Software Hub — ноутбук
-nt-software-hub-laptop-balance = Лайки: { $balance } (всего: { $total }, потрачено: { $spent })
 nt-software-hub-laptop-cost = { $cost } лайков
 nt-software-hub-laptop-buy = Купить
 nt-software-hub-laptop-purchased = Куплено
