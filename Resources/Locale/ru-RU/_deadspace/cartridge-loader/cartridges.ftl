@@ -9,3 +9,15 @@ scanner-program-document-title = Документ
 scanner-program-document-number = Документ #{ $number }
 scanner-program-unknown = Неизвестно
 scanner-program-stamps = Печати:
+
+nt-software-hub-cartridge-program-name = NT Software Hub
+nt-software-hub-cartridge-title = NT Software Hub
+nt-software-hub-category-all = Все
+nt-software-hub-category-tools = Инструменты
+nt-software-hub-category-equipment = Оборудование
+nt-software-hub-category-games = Игры
+nt-software-hub-status-connected = Сеть: Подключено
+nt-software-hub-memory = Память: { $used }/{ $max }
+nt-software-hub-no-programs = Нет доступных программ
+nt-software-hub-install = Загрузить
+nt-software-hub-uninstall = Удалить

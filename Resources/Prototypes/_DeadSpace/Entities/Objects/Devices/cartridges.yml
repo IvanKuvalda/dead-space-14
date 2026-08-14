@@ -30,3 +30,20 @@
       sprite: Objects/Specific/Hydroponics/apple.rsi
       state: produce
   - type: ScannerProgram
+
+- type: entity
+  parent: BasePDACartridge
+  id: NtSoftwareHubCartridge
+  name: картридж NT Software Hub
+  description: Программа для загрузки приложений на КПК. Каталог программ NT Software Hub.
+  components:
+  - type: Sprite
+    state: cart-y
+  - type: UIFragment
+    ui: !type:NtSoftwareHubCartridgeUi
+  - type: Cartridge
+    programName: nt-software-hub-cartridge-program-name
+    icon:
+      sprite: Structures/Machines/computers.rsi
+      state: rdcomp
+  - type: NtSoftwareHubCartridge

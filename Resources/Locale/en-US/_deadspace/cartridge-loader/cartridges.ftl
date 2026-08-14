@@ -1,0 +1,11 @@
+nt-software-hub-cartridge-program-name = NT Software Hub
+nt-software-hub-cartridge-title = NT Software Hub
+nt-software-hub-category-all = All
+nt-software-hub-category-tools = Tools
+nt-software-hub-category-equipment = Equipment
+nt-software-hub-category-games = Games
+nt-software-hub-status-connected = Network: Connected
+nt-software-hub-memory = Memory: { $used }/{ $max }
+nt-software-hub-no-programs = No programs available
+nt-software-hub-install = Install
+nt-software-hub-uninstall = Uninstall

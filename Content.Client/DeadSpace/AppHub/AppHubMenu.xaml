@@ -46,7 +46,7 @@
                     <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6" VerticalAlignment="Center">
                         <Label Text="ПАМЯТЬ КПК" StyleClasses="LabelSubText" HorizontalAlignment="Center" FontColorOverride="#88AAAA" />
                         <Label Name="MemoryLabel" Text="0 / 0" HorizontalAlignment="Center" FontColorOverride="#FFFFFF" StyleClasses="LabelBig" />
-                        <ProgressBar Name="MemoryBar" MinValue="0" MaxValue="8" Value="0" MinHeight="24" />
+                        <ProgressBar Name="MemoryBar" MinValue="0" MaxValue="12" Value="0" MinHeight="24" />
                     </BoxContainer>
                 </PanelContainer>
             </BoxContainer>

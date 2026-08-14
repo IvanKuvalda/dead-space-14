@@ -79,7 +79,9 @@
     range: 500
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
+    diskSpace: 12
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -167,6 +169,7 @@
   components:
   - type: CartridgeLoader
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NanoTaskCartridge
@@ -183,6 +186,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -435,6 +439,7 @@
         components:
         - Cartridge
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NewsReaderCartridge
   - type: Appearance
@@ -498,6 +503,7 @@
     state: pda-qm
   - type: CartridgeLoader # DS14
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NanoTaskCartridge
@@ -544,6 +550,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -708,6 +715,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -904,6 +912,7 @@
     state: pda-hos
   - type: CartridgeLoader
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NanoTaskCartridge
@@ -976,6 +985,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -1003,6 +1013,7 @@
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -1160,6 +1171,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
       - BankCartridge
@@ -1199,6 +1211,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
       - MedTekCartridge
@@ -1248,6 +1261,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
+      - NtSoftwareHubCartridge
       - CrewManifestCartridge
       - NotekeeperCartridge
       - NanoTaskCartridge
@@ -1424,6 +1438,7 @@
     state: pda-detective
   - type: CartridgeLoader
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NanoTaskCartridge
@@ -1453,6 +1468,7 @@
     state: pda-brigmedic
   - type: CartridgeLoader
     preinstalled:
+    - NtSoftwareHubCartridge
     - CrewManifestCartridge
     - NotekeeperCartridge
     - NanoTaskCartridge
