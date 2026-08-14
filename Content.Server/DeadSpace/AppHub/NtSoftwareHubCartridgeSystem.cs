@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.CartridgeLoader;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.DeadSpace.AppHub;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.DeadSpace.AppHub;
@@ -10,6 +11,7 @@ public sealed class NtSoftwareHubCartridgeSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -76,6 +78,22 @@ public sealed class NtSoftwareHubCartridgeSystem : EntitySystem
         UpdateUiState(uid, loaderUid, component);
     }
 
+    public void RefreshCartridgesOnGrid(EntityUid grid)
+    {
+        var query = EntityQueryEnumerator<NtSoftwareHubCartridgeComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!TryComp<CartridgeComponent>(uid, out var cartridge) || cartridge.LoaderUid is not { } loader)
+                continue;
+
+            var loaderGrid = _transform.GetGrid(loader);
+            if (loaderGrid != grid)
+                continue;
+
+            UpdateUiState(uid, loader, comp);
+        }
+    }
+
     private void UpdateUiState(EntityUid uid, EntityUid loaderUid, NtSoftwareHubCartridgeComponent component)
     {
         if (!TryComp(loaderUid, out CartridgeLoaderComponent? loader))
@@ -92,10 +110,15 @@ public sealed class NtSoftwareHubCartridgeSystem : EntitySystem
                 installedProgramIds.Add(protoId);
         }
 
+        var purchased = GetPurchasedEntryIds(loaderUid);
+
         var catalogEntries = new List<AppHubCatalogEntry>();
         foreach (var proto in _prototype.EnumeratePrototypes<AppCatalogEntryPrototype>())
         {
             if (component.SelectedCategory != "All" && proto.Category != component.SelectedCategory)
+                continue;
+
+            if (proto.LikesCost > 0 && !purchased.Contains(proto.ID))
                 continue;
 
             catalogEntries.Add(new AppHubCatalogEntry
@@ -110,5 +133,19 @@ public sealed class NtSoftwareHubCartridgeSystem : EntitySystem
 
         var state = new NtSoftwareHubCartridgeUiState(usedDisk, loader.DiskSpace, component.SelectedCategory, catalogEntries);
         _cartridgeLoader.UpdateCartridgeUiState(loaderUid, state, loader: loader);
+    }
+
+    private HashSet<string> GetPurchasedEntryIds(EntityUid loaderUid)
+    {
+        var purchased = new HashSet<string>();
+
+        var grid = _transform.GetGrid(loaderUid);
+        if (grid != null && TryComp<NtSoftwareHubGridCatalogComponent>(grid.Value, out var gridCatalog))
+        {
+            foreach (var id in gridCatalog.PurchasedEntryIds)
+                purchased.Add(id);
+        }
+
+        return purchased;
     }
 }

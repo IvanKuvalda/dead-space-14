@@ -1,0 +1,24 @@
+- type: entity
+  parent: BaseComputer
+  id: NtSoftwareHubLaptop
+  name: ноутбук NT Software Hub
+  description: Специальный ноутбук для покупки приложений за лайки в новостях. Загруженные приложения добавляются в каталог NT Software Hub всех КПК на этой станции.
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _DeadSpace/Structures/Machines/Laptop.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: icon
+    - map: ["computerLayerScreen"]
+      state: unshaded
+      shader: unshaded
+  - type: NtSoftwareHubLaptop
+  - type: ActivatableUI
+    key: enum.NtSoftwareHubLaptopUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.NtSoftwareHubLaptopUiKey.Key:
+        type: NtSoftwareHubLaptopBoundUserInterface
+  - type: Computer
+    board: NtSoftwareHubLaptopCircuitboard

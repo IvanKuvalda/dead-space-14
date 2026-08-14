@@ -1,18 +1,13 @@
 # Категории: Tools, Equipment, Games
+# LikesCost > 0 означает, что приложение не входит в обычный каталог,
+# а доступно для покупки за лайки в новостях на ноутбуке NT Software Hub.
 
 - type: appCatalogEntry
-  id: app-messenger
-  name: app-catalog-entry-messenger-name
-  description: app-catalog-entry-messenger-desc
+  id: app-netprobe
+  name: app-catalog-entry-netprobe-name
+  description: app-catalog-entry-netprobe-desc
   category: Tools
-  programId: MessengerCartridge
-
-- type: appCatalogEntry
-  id: app-messenger-taipan
-  name: app-catalog-entry-messenger-taipan-name
-  description: app-catalog-entry-messenger-taipan-desc
-  category: Tools
-  programId: TaipanMessengerCartridge
+  programId: NetProbeCartridge
 
 - type: appCatalogEntry
   id: app-wanted-list
@@ -20,6 +15,7 @@
   description: app-catalog-entry-wanted-list-desc
   category: Equipment
   programId: WantedListCartridge
+  likesCost: 5
 
 - type: appCatalogEntry
   id: app-snake

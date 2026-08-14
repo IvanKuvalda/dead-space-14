@@ -1,0 +1,27 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               x:Class="Content.Client.DeadSpace.AppHub.NtSoftwareHubLaptopMenu"
+               Title="NT Software Hub"
+               MinWidth="700"
+               MinHeight="500">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+        <PanelContainer>
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#003366" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Horizontal" Margin="8 4" SeparationOverride="12">
+                <Label Name="LaptopTitleLabel" StyleClasses="LabelBig" Text="NT Software Hub" />
+                <Label Name="BalanceLabel" FontColorOverride="#FFD700" HorizontalExpand="True" HorizontalAlignment="Right" />
+            </BoxContainer>
+        </PanelContainer>
+        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#0d0d0dFF" BorderColor="#555555FF" BorderThickness="1" />
+            </PanelContainer.PanelOverride>
+            <ScrollContainer VerticalExpand="True" HScrollEnabled="False" Margin="6">
+                <BoxContainer Name="ProgramListContainer" Orientation="Vertical" SeparationOverride="6" Margin="4" />
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</DefaultWindow>

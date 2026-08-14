@@ -20,4 +20,7 @@ public sealed partial class AppCatalogEntryPrototype : IPrototype
 
     [DataField]
     public string ProgramId = string.Empty;
+
+    [DataField]
+    public int LikesCost;
 }

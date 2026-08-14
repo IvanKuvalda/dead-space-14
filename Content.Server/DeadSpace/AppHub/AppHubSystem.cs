@@ -153,6 +153,9 @@ public sealed class AppHubSystem : EntitySystem
         var catalogEntries = new List<AppHubCatalogEntry>();
         foreach (var proto in _prototype.EnumeratePrototypes<AppCatalogEntryPrototype>())
         {
+            if (proto.LikesCost > 0)
+                continue;
+
             if (comp.SelectedCategory != "All" && proto.Category != comp.SelectedCategory)
                 continue;
 
