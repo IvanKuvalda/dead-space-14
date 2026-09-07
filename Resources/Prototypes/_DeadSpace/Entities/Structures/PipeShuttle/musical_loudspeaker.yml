@@ -12,8 +12,8 @@
     state: base
   - type: Appearance
   - type: MusicalLoudspeaker
-    range: 12
-    volume: -2
+    range: 17
+    volume: 1
     songs:
     - path: /Audio/_DeadSpace/Music/_IvanKuvalda/french.ogg
     - path: /Audio/_DeadSpace/Music/_IvanKuvalda/games.ogg
