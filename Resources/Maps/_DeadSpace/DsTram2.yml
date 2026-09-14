@@ -149919,8 +149919,6 @@ entities:
       rot: 0.22251713275909424 rad
       pos: 25.04248,-61.4532
       parent: 2
-    - type: Physics
-      bodyStatus: InAir
     - type: Fixtures
       fixtures:
         fix1:
@@ -149939,36 +149937,12 @@ entities:
           hard: True
           restitution: 0.3
           friction: 0.2
-        throw-fixture:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          - BulletImpassable
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 5680.8675434
-      thrownTime: 5680.8
-      thrower: invalid
   - uid: 20676
     components:
     - type: Transform
       rot: -1.9689916372299194 rad
       pos: 24.69216,-62.340805
       parent: 2
-    - type: Physics
-      bodyStatus: InAir
     - type: Fixtures
       fixtures:
         fix1:
@@ -149987,28 +149961,6 @@ entities:
           hard: True
           restitution: 0.3
           friction: 0.2
-        throw-fixture:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          - BulletImpassable
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 5676.3117848
-      thrownTime: 5676.25
-      thrower: invalid
 - proto: ParticleAcceleratorComputerCircuitboard
   entities:
   - uid: 20677
@@ -173423,8 +173375,6 @@ entities:
       rot: -2.810241937637329 rad
       pos: 17.556496,-39.286842
       parent: 2
-    - type: Physics
-      bodyStatus: InAir
     - type: Fixtures
       fixtures:
         fix1:
@@ -173443,36 +173393,12 @@ entities:
           hard: True
           restitution: 0
           friction: 0.4
-        throw-fixture:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.35,-0.2
-            - 0.25,-0.2
-            - 0.25,0.1
-            - -0.35,0.1
-          mask:
-          - Impassable
-          - HighImpassable
-          - BulletImpassable
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 6151.6632886
-      thrownTime: 6151.65
-      thrower: invalid
   - uid: 24396
     components:
     - type: Transform
       rot: -1.803818941116333 rad
       pos: 19.795584,-39.212532
       parent: 2
-    - type: Physics
-      bodyStatus: InAir
     - type: Fixtures
       fixtures:
         fix1:
@@ -173491,28 +173417,6 @@ entities:
           hard: True
           restitution: 0
           friction: 0.4
-        throw-fixture:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.35,-0.2
-            - 0.25,-0.2
-            - 0.25,0.1
-            - -0.35,0.1
-          mask:
-          - Impassable
-          - HighImpassable
-          - BulletImpassable
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 6172.3521546
-      thrownTime: 6172.3
-      thrower: invalid
 - proto: SpaceCash10
   entities:
   - uid: 24397
@@ -183402,8 +183306,6 @@ entities:
       rot: 2.9067447185516357 rad
       pos: 24.66128,-62.67531
       parent: 2
-    - type: Physics
-      bodyStatus: InAir
     - type: Fixtures
       fixtures:
         fix1:
@@ -183422,28 +183324,6 @@ entities:
           hard: True
           restitution: 0.3
           friction: 0.2
-        throw-fixture:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.25,-0.25
-            - 0.25,-0.25
-            - 0.25,0.25
-            - -0.25,0.25
-          mask:
-          - Impassable
-          - HighImpassable
-          - BulletImpassable
-          layer: []
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-    - type: ThrownItem
-      playLandSound: True
-      landTime: 5670.8137493
-      thrownTime: 5670.75
-      thrower: invalid
 - proto: ValentineCard
   entities:
   - uid: 25870
