@@ -1095,7 +1095,8 @@ public sealed partial class ConsoleCraftSystem : EntitySystem
         }
 
         var armorProto = itemProto;
-        if (armorProto.Components.TryGetValue("ToggleableClothing", out var toggleEntry) &&
+        if (!armorProto.Components.ContainsKey("Armor") &&
+            armorProto.Components.TryGetValue("ToggleableClothing", out var toggleEntry) &&
             toggleEntry.Component is ToggleableClothingComponent toggle &&
             !string.IsNullOrEmpty(toggle.ClothingPrototype.Id) &&
             _proto.TryIndex<EntityPrototype>(toggle.ClothingPrototype.Id, out var innerProto))
@@ -1122,9 +1123,9 @@ public sealed partial class ConsoleCraftSystem : EntitySystem
     private void AddMeleeStats(List<ConsoleCraftItemStat> stats, MeleeWeaponComponent melee)
     {
         stats.Add(HeaderStat("consolecraft-stats-header-attack"));
-        stats.Add(ValueStat("consolecraft-stats-damage", FormatDamage(melee.Damage)));
-        stats.Add(ValueStat("consolecraft-stats-attack-rate", $"{melee.AttackRate:0.##}"));
-        stats.Add(ValueStat("consolecraft-stats-range", $"{melee.Range:0.##}"));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-damage"), FormatDamage(melee.Damage)));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-attack-rate"), $"{melee.AttackRate:0.##}"));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-range"), $"{melee.Range:0.##}"));
 
         var piercing = new List<(string Type, string Level)>();
         foreach (var type in melee.Damage.DamageDict.Keys)
@@ -1169,44 +1170,18 @@ public sealed partial class ConsoleCraftSystem : EntitySystem
     private void AddGunStats(List<ConsoleCraftItemStat> stats, EntityPrototype gunProto, GunComponent gun)
     {
         stats.Add(HeaderStat("consolecraft-stats-header-firearm"));
-        stats.Add(ValueStat("consolecraft-stats-fire-rate", $"{gun.FireRate:0.##}"));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-fire-rate"), $"{gun.FireRate:0.##}"));
 
-        if (gun.AvailableModes != SelectiveFire.SemiAuto)
-            stats.Add(ValueStat("consolecraft-stats-burst", $"{gun.ShotsPerBurst}"));
+        if ((gun.AvailableModes & SelectiveFire.Burst) != 0)
+            stats.Add(ValueStat(Loc.GetString("consolecraft-stats-burst"), $"{gun.ShotsPerBurst}"));
 
-        stats.Add(ValueStat("consolecraft-stats-spread", $"{gun.MinAngle.Degrees:0.##}°"));
-        stats.Add(ValueStat("consolecraft-stats-projectile-speed", $"{gun.ProjectileSpeed:0.##}"));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-spread"), $"{gun.MinAngle.Degrees:0.##}°"));
+        stats.Add(ValueStat(Loc.GetString("consolecraft-stats-projectile-speed"), $"{gun.ProjectileSpeed:0.##}"));
 
-        var damageText = ResolveGunShotDamage(gunProto);
+        var projectile = CraftingPrototypeHelpers.GetDefaultProjectile(gunProto, _proto, EntityManager.ComponentFactory);
+        var damageText = projectile != null ? AmmoDamageText(projectile) : null;
         if (damageText != null)
-            stats.Add(ValueStat("consolecraft-stats-shot-damage", damageText));
-    }
-
-    private string? ResolveGunShotDamage(EntityPrototype gunProto)
-    {
-        if (gunProto.Components.TryGetValue("BasicEntityAmmoProvider", out var basicEntry) &&
-            basicEntry.Component is BasicEntityAmmoProviderComponent basic &&
-            _proto.TryIndex<EntityPrototype>(basic.Proto, out var ammoProto))
-        {
-            var text = AmmoDamageText(ammoProto);
-            if (text != null)
-                return text;
-        }
-
-        if (gunProto.Components.TryGetValue("BallisticAmmoProvider", out var ballisticEntry) &&
-            ballisticEntry.Component is BallisticAmmoProviderComponent ballistic &&
-            ballistic.Proto != null &&
-            _proto.TryIndex<EntityPrototype>(ballistic.Proto.Value.Id, out var cartridgeProto) &&
-            cartridgeProto.Components.TryGetValue("CartridgeAmmo", out var cartEntry) &&
-            cartEntry.Component is CartridgeAmmoComponent cart &&
-            _proto.TryIndex<EntityPrototype>(cart.Prototype.Id, out var projectileProto))
-        {
-            var text = AmmoDamageText(projectileProto);
-            if (text != null)
-                return text;
-        }
-
-        return null;
+            stats.Add(ValueStat(Loc.GetString("consolecraft-stats-shot-damage"), damageText));
     }
 
     private string? AmmoDamageText(EntityPrototype ammoProto)
@@ -1230,7 +1205,8 @@ public sealed partial class ConsoleCraftSystem : EntitySystem
         if (ammoProto.Components.TryGetValue("HitscanStaminaDamage", out var stamEntry) &&
             stamEntry.Component is HitscanStaminaDamageComponent stamina)
         {
-            parts.Add($"{stamina.StaminaDamage:0.##} {Loc.GetString("consolecraft-stats-stamina-damage")}");
+            parts.Add(Loc.GetString("consolecraft-stats-stamina-damage-value",
+                ("amount", $"{stamina.StaminaDamage:0.##}")));
         }
 
         return parts.Count > 0 ? string.Join(", ", parts) : null;

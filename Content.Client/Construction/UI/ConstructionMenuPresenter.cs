@@ -20,6 +20,7 @@ using Content.Shared.DeadSpace.AdminToy;
 using Content.Shared.Armor;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
+using Content.Shared.DeadSpace.ConsoleCraft;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Melee;
@@ -565,42 +566,13 @@ namespace Content.Client.Construction.UI
                 _damageExamine.AddDamageExamine(msg, damage, Loc.GetString("damage-projectile"));
         }
 
+        // DS14-start
         private DamageSpecifier? GetGunDamage(EntityPrototype proto)
         {
             var factory = _entManager.ComponentFactory;
-
-            if (proto.TryGetComponent<BatteryAmmoProviderComponent>(out var battery, factory))
-                return GetProjectileDamage(battery.Prototype);
-
-            if (proto.TryGetComponent<BasicEntityAmmoProviderComponent>(out var basic, factory))
-                return GetProjectileDamage(basic.Proto);
-
-            if (proto.TryGetComponent<RevolverAmmoProviderComponent>(out var revolver, factory) && revolver.FillPrototype is { } fillProto)
-                return GetCartridgeDamage(fillProto);
-
-            if (proto.TryGetComponent<BallisticAmmoProviderComponent>(out var ballistic, factory) && ballistic.Proto is { } ammoProto)
-                return GetCartridgeDamage(ammoProto);
-
-            return null;
-        }
-
-        private DamageSpecifier? GetCartridgeDamage(string ammoProtoId)
-        {
-            if (!_prototypeManager.TryIndex(ammoProtoId, out EntityPrototype? ammoProto))
+            var projectileProto = CraftingPrototypeHelpers.GetDefaultProjectile(proto, _prototypeManager, factory);
+            if (projectileProto == null)
                 return null;
-
-            if (ammoProto.TryGetComponent<CartridgeAmmoComponent>(out var cartridge, _entManager.ComponentFactory))
-                return GetProjectileDamage(cartridge.Prototype);
-
-            return GetProjectileDamage(ammoProtoId);
-        }
-
-        private DamageSpecifier? GetProjectileDamage(string projectileProtoId)
-        {
-            if (!_prototypeManager.TryIndex(projectileProtoId, out EntityPrototype? projectileProto))
-                return null;
-
-            var factory = _entManager.ComponentFactory;
 
             if (projectileProto.TryGetComponent<ProjectileComponent>(out var projectile, factory) && !projectile.Damage.Empty)
                 return _damageable.ApplyUniversalAllModifiers(projectile.Damage * _damageable.UniversalProjectileDamageModifier);
@@ -610,6 +582,7 @@ namespace Content.Client.Construction.UI
 
             return null;
         }
+        // DS14-end
 
         private void UpdateGhostPlacement()
         {
