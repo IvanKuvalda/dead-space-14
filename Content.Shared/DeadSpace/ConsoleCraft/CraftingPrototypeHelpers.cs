@@ -38,15 +38,16 @@ public static class CraftingPrototypeHelpers
                 if (!prototype.TryGetComponent<ItemSlotsComponent>(out var slots, factory))
                     return null;
 
+                IReadOnlyDictionary<string, ItemSlot> slotDefinitions = slots.Slots;
                 next = null;
                 if (prototype.TryGetComponent<ChamberMagazineAmmoProviderComponent>(out _, factory) &&
-                    slots.Slots.TryGetValue(SharedGunSystem.ChamberSlot, out var chamber))
+                    slotDefinitions.TryGetValue(SharedGunSystem.ChamberSlot, out var chamber))
                 {
                     next = chamber.StartingItem;
                 }
 
                 if (string.IsNullOrEmpty(next) &&
-                    slots.Slots.TryGetValue(SharedGunSystem.MagazineSlot, out var magazine))
+                    slotDefinitions.TryGetValue(SharedGunSystem.MagazineSlot, out var magazine))
                 {
                     next = magazine.StartingItem;
                 }
