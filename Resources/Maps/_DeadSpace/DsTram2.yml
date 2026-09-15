@@ -149956,7 +149956,7 @@ entities:
           hard: False
           restitution: 0
           friction: 0.4
-      - uid: 20676
+  - uid: 20676
     components:
     - type: Transform
       rot: -1.9689916372299194 rad
@@ -173450,7 +173450,7 @@ entities:
           hard: False
           restitution: 0
           friction: 0.4
-     - uid: 24396
+  - uid: 24396
     components:
     - type: Transform
       rot: -1.803818941116333 rad
